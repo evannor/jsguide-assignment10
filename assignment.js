@@ -18,9 +18,29 @@ class Course {
   }
 }
 
-const JSCourse = new Course("Javascript Course", 60, 199.99);
-const DrawingCourse = new Course("Drawing Course", 25, 89.99);
-console.log(JSCourse.pricePerHour());
-console.log(JSCourse.courseSummary());
-console.log(DrawingCourse.pricePerHour());
-console.log(DrawingCourse.courseSummary());
+class PracticalCourse extends Course {
+  numofExercises;
+
+  constructor(title, length, price, numofExercises) {
+    super(title, length, price);
+    this.numofExercises = numofExercises;
+  }
+}
+class TheoreticalCourse extends Course {
+  constructor(title, length, price) {
+    super(title, length, price);
+  }
+
+  publish() {
+    return `Now is the time to publish this course!`;
+  }
+}
+
+const BeatTaxSeason = new PracticalCourse("Beat Tax Season", 75, 129.99, 35);
+const MusicTheory = new TheoreticalCourse("Music Theory", 125, 299.99);
+
+console.log(BeatTaxSeason);
+console.log(BeatTaxSeason.numofExercises);
+console.log(BeatTaxSeason.courseSummary());
+console.log(MusicTheory);
+console.log(MusicTheory.publish());
